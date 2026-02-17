@@ -6,12 +6,11 @@ const loginPage = new LoginPage();
 const merchantPage = new MerchantPage();
 
 Given("User at Merchant App", () => {
-  // 1. Panggil sesi (Jika baru pertama kali, dia akan login UI. Jika sudah, dia langsung restore sesi)
+    cy.wait(5000);
   loginPage.loginViaSession();
-
-  // 2. Karena sudah memiliki sesi/akses, kita bisa langsung tembak URL ke halaman dalam
-  // Sesuaikan URL di bawah ini dengan URL asli dashboard/halaman utamanya
+  cy.wait(3000);
   cy.visit('/merchant/app'); 
+  cy.wait(3000);
 });
 
 When("User click Catat Penjualan button", () => {

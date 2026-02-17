@@ -20,10 +20,15 @@ class LoginPage {
   }
   loginViaSession() {
     cy.session('merchant-session', () => {
+      cy.wait(3000)
       this.visit();
+      cy.wait(3000)
       this.inputUsername();
+      cy.wait(1000)
       this.inputPassword();
+      cy.wait(1000)
       this.clickLogin();
+      cy.wait(3000)
       cy.url().should('not.include', 'login'); 
     });
   }

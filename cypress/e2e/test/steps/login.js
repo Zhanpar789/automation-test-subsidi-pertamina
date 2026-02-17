@@ -18,5 +18,6 @@ When("user login with valid credential", () => {
 });
 
 Then("user successfully login", () => {
+  cy.wait(5000);
   cy.url().should("not.include", "login");
 });

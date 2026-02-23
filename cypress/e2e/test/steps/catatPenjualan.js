@@ -26,24 +26,14 @@ When("User input KTP Pelanggan to {string}", (Pelanggan) => {
 
 When("User click Lanjutkan Penjualan button", () => {
     merchantPage.clickLanjutkanPenjualanButton();
-
-    // 1. Beri waktu sejenak agar sistem web merespons dan memunculkan pop-up (jika ada)
     cy.wait(1500); 
-
-    // 2. Cek isi seluruh halaman (body) secara aman tanpa memicu error Cypress
     cy.get('body').then(($body) => {
-        // Cek apakah di dalam body ada teks 'Rumah Tangga'
         if ($body.find('span:contains("Rumah Tangga")').length > 0) {
-            
-            // --- KONDISI 1: JIKA ADA OPSI RUMAH TANGGA ---
             cy.log('Opsi Kategori Muncul! Memilih Rumah Tangga...');
             merchantPage.chooseRumahTanggaOption();
             merchantPage.clickLanjutkanTransaksiButton();
 
         } else {
-
-            // --- KONDISI 2: JIKA TIDAK ADA OPSI RUMAH TANGGA ---
-            // Jangan lakukan apa-apa, Cypress akan otomatis lanjut ke step berikutnya (Cek Pesanan)
             cy.log('Opsi Kategori Tidak Muncul. Lanjut flow normal...');
             
         }

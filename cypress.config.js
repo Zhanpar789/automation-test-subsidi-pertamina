@@ -10,7 +10,6 @@ module.exports = defineConfig({
       USERNAME: process.env.USERNAME,
       PASSWORD: process.env.PASSWORD,
     },
-    // Tambahkan baseUrl agar cy.visit('/merchant-login') bisa berjalan
     baseUrl: "https://subsiditepatlpg.mypertamina.id", 
     
     specPattern: "cypress/e2e/test/feature/**/*.feature",
